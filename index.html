@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Lupiani Imóveis · Lançamentos em Barueri e Alphaville</title>
-<meta name="description" content="Apartamentos, studios e lotes na planta em Barueri e Alphaville. Assistente para achar o imóvel certo, tabela, book e visita guiada.">
+<title>Lupiani Imóveis · Imóveis prontos e na planta em Barueri e Alphaville</title>
+<meta name="description" content="Imóveis prontos e na planta em Barueri e Alphaville: apartamentos, studios e lotes. Assistente para achar o imóvel certo, tabela, book e visita guiada.">
 <meta name="theme-color" content="#0f2340">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -186,22 +186,125 @@ dl{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;margin:0}dt{color:va
 .ctb th{background:#f1ece2;font-size:.78rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);width:130px}
 .ctb thead td{font-family:var(--d);font-size:1.15rem;font-weight:600}
 .ctb thead img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:10px;margin-bottom:8px}
+
+/* ===== v2: busca, coleções, cards, favoritos ===== */
+.hsearch{margin-top:28px;background:#fff;border-radius:18px;padding:8px;display:flex;gap:8px;max-width:780px;box-shadow:0 24px 60px rgb(0 0 0/.3)}
+.hsearch input{border:0;font-size:1.05rem;padding:14px 14px 14px 44px;background:#fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none' stroke='%235f6b7d' stroke-width='2' viewBox='0 0 24 24'%3E%3Ccircle cx='11' cy='11' r='7'/%3E%3Cpath d='m20 20-3.5-3.5'/%3E%3C/svg%3E") 14px center no-repeat}
+.hsearch input:focus{outline:none}
+.hsearch .btn{flex:none;padding:14px 26px}
+.hquick{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;align-items:center}
+.hquick button{background:rgb(255 255 255/.1);border:1px solid rgb(255 255 255/.28);color:#fff;border-radius:999px;padding:7px 14px;font-size:.88rem;font-weight:600}
+.hquick button:hover{background:rgb(255 255 255/.2)}
+.hquick .lk{background:none;border:0;color:var(--gold2);text-decoration:underline;padding:7px 4px}
+@media(max-width:620px){.hsearch{flex-direction:column}.hsearch .btn{width:100%}}
+.favh{display:inline-flex;align-items:center;gap:6px;background:rgb(255 255 255/.1);border:1px solid rgb(255 255 255/.25);color:#fff;border-radius:999px;padding:8px 13px;font-weight:700;font-size:.88rem}
+.favh svg{width:16px;height:16px}.favh.has svg{fill:var(--gold);stroke:var(--gold)}
+@media(max-width:1020px){.favh{margin-left:auto}.top .wab{margin-left:0}}
+@media(max-width:620px){.favh{display:none}.top .wab{margin-left:auto}}
+/* coleções */
+.cols{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(200px,1fr);gap:14px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 2px 12px;margin-top:24px;scrollbar-width:thin}
+@media(min-width:1000px){.cols{grid-auto-flow:row;grid-template-columns:repeat(4,1fr);overflow:visible}}
+.col{position:relative;aspect-ratio:4/5;border-radius:18px;overflow:hidden;cursor:pointer;scroll-snap-align:start;border:0;padding:0;text-align:left;color:#fff;background:var(--navy)}
+@media(min-width:1000px){.col{aspect-ratio:16/11}}
+.col img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.col:hover img{transform:scale(1.06)}
+.col:after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgb(15 35 64/0) 35%,rgb(15 35 64/.92))}
+.col .ci{position:absolute;left:16px;right:16px;bottom:14px;z-index:1}
+.col b{font-family:var(--d);font-size:1.3rem;display:block;line-height:1.15}
+.col small{display:block;font-size:.84rem;color:#dfe5ee;margin-top:3px}
+.col em{position:absolute;top:12px;left:12px;z-index:1;font-style:normal;background:var(--gold);color:#1d1606;font-size:.72rem;font-weight:700;padding:4px 10px;border-radius:999px}
+/* filtros v2 */
+.srch .btn{flex:none;padding:11px 18px}
+.badge{display:inline-flex;min-width:20px;height:20px;border-radius:999px;background:var(--gold);color:#1d1606;font-size:.72rem;align-items:center;justify-content:center;padding:0 6px}
+.badge:empty{display:none}
+.adv{display:grid;gap:12px;padding-top:4px;border-top:1px dashed var(--line)}
+.adv[hidden]{display:none}
+.frow select{width:auto;padding:8px 12px;font-size:.9rem}
+.act{display:flex;flex-wrap:wrap;gap:8px}.act:empty{display:none}
+.act button{background:#f1ece2;border:0;border-radius:999px;padding:6px 12px;font-size:.84rem;font-weight:600;color:#4b3f25}
+.act button:after{content:" ×";font-weight:700}
+.cnt{flex-wrap:wrap;gap:10px}
+.cnt .cr{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.cnt select{width:auto;padding:7px 10px;font-size:.88rem}
+.fonly{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 12px;font-weight:600;font-size:.86rem;color:var(--ink)}
+.fonly.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+.fonly svg{width:14px;height:14px}
+.fonly.on svg{fill:var(--gold);stroke:var(--gold)}
+/* cards v2 */
+.ph{cursor:default;overflow:hidden}
+.slides{position:absolute;inset:0;display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;cursor:pointer}
+.slides::-webkit-scrollbar{display:none}
+.slides img{flex:none;width:100%;height:100%;object-fit:cover;scroll-snap-align:center}
+.tags{position:absolute;left:12px;top:12px;display:flex;gap:6px;flex-wrap:wrap;max-width:calc(100% - 110px);pointer-events:none}
+.tags .tag{position:static}
+.tag.cod{background:rgb(15 35 64/.85);color:#fff}
+.acts{position:absolute;right:10px;top:10px;display:flex;gap:6px}
+.acts .shr{position:static}
+.ic svg{width:18px;height:18px}
+.fav svg{fill:none;stroke:var(--navy);stroke-width:2}
+.fav.on svg{fill:#d64550;stroke:#d64550}
+.sa{position:absolute;top:44%;transform:translateY(-50%);width:34px;height:34px;border-radius:50%;border:0;background:rgb(255 255 255/.9);font-size:1.15rem;opacity:0;transition:opacity .2s;box-shadow:0 2px 6px rgb(0 0 0/.2)}
+.sa.p{left:10px}.sa.n{right:10px}
+.ph:hover .sa{opacity:1}
+@media(hover:none){.sa{display:none}}
+.pov{position:absolute;left:0;right:0;bottom:0;padding:34px 14px 12px;background:linear-gradient(180deg,rgb(0 0 0/0),rgb(0 0 0/.62));color:#fff;pointer-events:none;display:flex;justify-content:space-between;align-items:flex-end;gap:10px}
+.pov b{font-family:var(--d);font-size:1.35rem;line-height:1.1}
+.pov small{display:block;font-size:.72rem;opacity:.85;font-weight:600;letter-spacing:.04em;text-transform:uppercase}
+.sdots{display:flex;gap:4px;padding-bottom:5px}.sdots i{width:6px;height:6px;border-radius:50%;background:rgb(255 255 255/.5)}.sdots i.on{background:#fff;width:14px;border-radius:3px}
+.cb h3{font-size:1.3rem}
+.pills .pill{display:inline-flex;align-items:center;gap:5px}
+/* vistos recentemente */
+.vis{margin-top:40px}.vis[hidden]{display:none}
+.vis h3{font-size:1.4rem;margin:6px 0 14px}
+.vrow{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(240px,300px);gap:12px;overflow-x:auto;padding-bottom:8px}
+.vrow .mini{background:#fff}
+
+/* ===== v3: logotipo, topo curto, prontos e na planta ===== */
+.logo{flex-direction:row;align-items:center;gap:11px}
+.logo .lgi{width:42px;height:40px;flex:none}
+.logo .lgt{display:flex;flex-direction:column;line-height:1}
+.logo .lgt b{font-family:var(--d);font-size:1.75rem;letter-spacing:.12em;background:linear-gradient(90deg,#b8913f,#f2dc9a 45%,#c8a24a 70%,#9c7631);-webkit-background-clip:text;background-clip:text;color:transparent}
+.logo .lgt small{font-size:.66rem;letter-spacing:.42em;color:#e9d9ae;margin-top:5px}
+@media(max-width:620px){.logo .lgi{width:32px;height:30px}.logo .lgt b{font-size:1.35rem}.logo .lgt small{font-size:.56rem;letter-spacing:.34em}}
+.hero .w{padding-top:56px;padding-bottom:44px}
+.hero h1{font-size:clamp(1.9rem,5vw,3.1rem);max-width:22ch;margin:10px 0 0}
+.htabs{display:inline-flex;background:rgb(255 255 255/.12);border:1px solid rgb(255 255 255/.22);border-radius:999px;padding:4px;margin-top:24px;gap:2px}
+.htabs button{border:0;background:none;color:#fff;font-weight:700;font-size:.92rem;padding:8px 18px;border-radius:999px}
+.htabs button.on{background:var(--gold);color:#1d1606}
+.hsearch{margin-top:12px;max-width:none;display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr auto;gap:0;padding:6px}
+.hsearch>*{min-width:0}
+.hsearch select{border:0;border-left:1px solid var(--line);border-radius:0;font-size:.95rem;padding:14px 12px;background-color:#fff}
+.hsearch select:focus{outline:none}
+.hsearch .btn{margin-left:6px}
+@media(max-width:860px){.hsearch{grid-template-columns:1fr 1fr;gap:6px}.hsearch input{grid-column:1/-1;border-bottom:1px solid var(--line)}.hsearch select{border:1px solid var(--line);border-radius:10px}.hsearch .btn{grid-column:1/-1;margin:0}}
+.hstat{display:flex;flex-wrap:wrap;gap:6px 22px;margin-top:18px;font-size:.88rem;color:#c3cddb}
+.hstat b{color:var(--gold2);font-family:var(--d);font-size:1.05rem;margin-right:4px}
 </style>
 </head>
 <body>
 <header class="top"><div class="w">
- <a class="logo" href="#"><b>LUPIANI</b><small>IMÓVEIS · LANÇAMENTOS</small></a>
+ <a class="logo" href="#" aria-label="Lupiani Imóveis"><svg class="lgi" viewBox="0 0 128 120" aria-hidden="true"><defs><linearGradient id="lgg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8f6b26"/><stop offset=".22" stop-color="#e8cc83"/><stop offset=".45" stop-color="#b38a3c"/><stop offset=".62" stop-color="#f2dc9a"/><stop offset=".82" stop-color="#c39a4a"/><stop offset="1" stop-color="#8a6624"/></linearGradient></defs><g fill="url(#lgg)"><path d="M0 120V74.6L23.6 52.2V120z"/><path d="M29 120V25.1L60.7 0V120z"/><path d="M67.3 120V0L99 25.1V120z"/><path d="M104.4 120V52.2L128 74.6V120z"/></g></svg><span class="lgt"><b>LUPIANI</b><small>IMÓVEIS</small></span></a>
  <span class="hid">Fábio Lupiani · CRECI-SP 232678-F</span>
  <nav><a href="#imoveis">Imóveis</a><a href="#simular">Simular</a><a href="#guia">Guia</a><a href="#contato">Contato</a></nav>
+ <button class="favh" id="favh" aria-label="Meus favoritos"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.2 0 3.6 1.2 4.3 2.4.7-1.2 2.1-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg><span id="favn">0</span></button>
  <a class="wab" id="topwa" target="_blank" rel="noopener"></a>
 </div></header>
 
 <section class="hero"><div class="bgi" id="herobg"></div><div class="w">
- <span class="eb">Lançamentos em Barueri e Alphaville</span>
- <h1>Seu imóvel na planta, escolhido com <em>segurança</em>.</h1>
- <p class="sub">Apartamentos, studios e lotes das melhores incorporadoras da região. A gente te mostra as opções certas para o seu momento, com tabela atualizada, simulação real e visita guiada.</p>
- <div class="ctas"><button class="btn g" data-chat>Encontrar meu imóvel em 1 minuto</button><a class="btn o" href="#imoveis">Ver todos os imóveis</a></div>
- <div class="stats" id="stats"></div>
+ <span class="eb">Imóveis prontos e na planta · Barueri e Alphaville</span>
+ <h1>Encontre o seu <em>próximo imóvel</em> com quem conhece a região.</h1>
+ <div class="htabs" role="tablist" aria-label="Situação do imóvel"><button type="button" data-cond="" class="on">Todos</button><button type="button" data-cond="planta">Na planta</button><button type="button" data-cond="pronto">Prontos</button></div>
+ <form class="hsearch" id="hs"><input id="hq" type="search" placeholder="Código, bairro ou empreendimento" aria-label="Buscar imóveis" autocomplete="off">
+  <select id="hreg" aria-label="Região"><option value="">Região</option><option>Barueri</option><option>Alphaville</option></select>
+  <select id="htipo" aria-label="Tipo"></select>
+  <select id="hval" aria-label="Valor até"><option value="">Valor até</option><option value="400000">Até R$ 400 mil</option><option value="500000">Até R$ 500 mil</option><option value="700000">Até R$ 700 mil</option><option value="900000">Até R$ 900 mil</option><option value="1200000">Até R$ 1,2 mi</option></select>
+  <button class="btn g">Buscar</button></form>
+ <div class="hquick"><button type="button" class="lk" data-q="mais">Mais filtros</button><button type="button" class="lk" data-chat>Prefere ajuda? Fale com o Lupi</button></div>
+ <div class="hstat" id="stats"></div>
+</div></section>
+
+<section class="sec" id="colecoes"><div class="w"><span class="eb">Coleções</span><h2>Encontre pelo seu estilo de vida</h2><p class="sub">Atalhos para os perfis mais procurados. Toque e veja só os imóveis daquela seleção.</p>
+ <div class="cols" id="cols"></div>
 </div></section>
 
 <section class="sec"><div class="w"><div class="assi">
@@ -222,14 +325,23 @@ dl{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;margin:0}dt{color:va
 
 <section class="sec" id="imoveis"><div class="w"><span class="eb">Portfólio</span><h2>Todos os imóveis</h2><p class="sub">Filtre, compare lado a lado e mande para quem vai decidir com você.</p>
  <div class="filt">
-  <div class="srch"><input id="q" type="search" placeholder="Buscar por nome, bairro ou incorporadora"><select id="pmax" style="max-width:190px"><option value="">Qualquer valor</option><option value="400000">Até R$ 400 mil</option><option value="500000">Até R$ 500 mil</option><option value="700000">Até R$ 700 mil</option><option value="900000">Até R$ 900 mil</option></select></div>
-  <div class="frow" data-f="regiao"><span>Região</span></div>
-  <div class="frow" data-f="tipo"><span>Tipo</span></div>
-  <div class="frow" data-f="dorm"><span>Dorms</span></div>
-  <div class="frow" data-f="status"><span>Fase</span></div>
+  <div class="srch"><input id="q" type="search" placeholder="Busque por código, bairro ou empreendimento" aria-label="Buscar"><button class="btn n" id="mf" aria-expanded="false">Mais filtros <span class="badge" id="mfn"></span></button></div>
+  <div class="act" id="act"></div>
+  <div class="adv" id="adv" hidden>
+   <div class="frow" id="fcond"><span>Situação</span><button class="ch" data-cond="planta">Na planta</button><button class="ch" data-cond="pronto">Prontos</button></div>
+   <div class="frow" data-f="regiao"><span>Região</span></div>
+   <div class="frow" data-f="tipo"><span>Tipo</span></div>
+   <div class="frow" data-f="dorm"><span>Dorms</span></div>
+   <div class="frow" data-f="status"><span>Fase</span></div>
+   <div class="frow"><span>Valor</span><select id="pmin" aria-label="Valor mínimo"><option value="">De: sem mínimo</option><option value="400000">De R$ 400 mil</option><option value="500000">De R$ 500 mil</option><option value="600000">De R$ 600 mil</option><option value="700000">De R$ 700 mil</option><option value="800000">De R$ 800 mil</option></select><select id="pmax" aria-label="Valor máximo"><option value="">Até: sem máximo</option><option value="400000">Até R$ 400 mil</option><option value="500000">Até R$ 500 mil</option><option value="600000">Até R$ 600 mil</option><option value="700000">Até R$ 700 mil</option><option value="900000">Até R$ 900 mil</option><option value="1200000">Até R$ 1,2 mi</option></select></div>
+   <div class="frow"><span>Área</span><select id="amin" aria-label="Área mínima"><option value="">Qualquer área</option><option value="40">A partir de 40 m²</option><option value="55">A partir de 55 m²</option><option value="65">A partir de 65 m²</option><option value="80">A partir de 80 m²</option><option value="100">A partir de 100 m²</option></select></div>
+   <div class="frow"><span>Entrega</span><select id="fent" aria-label="Entrega"><option value="">Qualquer data</option><option value="2027">Até 2027</option><option value="2028">Até 2028</option><option value="2030">Até 2030</option></select></div>
+   <div class="frow"><span>Incorp.</span><select id="finc" aria-label="Incorporadora"><option value="">Todas as incorporadoras</option></select></div>
+  </div>
  </div>
- <div class="cnt"><span id="nres"></span><button id="clr">Limpar filtros</button></div>
+ <div class="cnt"><span id="nres"></span><div class="cr"><button class="fonly" id="fonly"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.2 0 3.6 1.2 4.3 2.4.7-1.2 2.1-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>Favoritos</button><select id="ord" aria-label="Ordenar"><option value="">Mais relevantes</option><option value="pa">Menor preço</option><option value="pd">Maior preço</option><option value="m2">Maior metragem</option><option value="ent">Entrega mais próxima</option></select><button id="clr">Limpar filtros</button></div></div>
  <div class="grid" id="grid"></div>
+ <div class="vis" id="vis" hidden><span class="eb">Seu histórico</span><h3>Vistos recentemente</h3><div class="vrow" id="vrow"></div></div>
 </div></section>
 
 <section class="sec" id="simular"><div class="w"><span class="eb">Simulador</span><h2>Quanto da sua renda cabe na parcela?</h2><p class="sub">Uma conta rápida para você chegar preparado. A simulação oficial a gente faz com o banco, com os seus dados.</p>
@@ -247,7 +359,7 @@ dl{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;margin:0}dt{color:va
  </div></div>
 </div></section>
 
-<section class="sec"><div class="w"><span class="eb">Por que a Lupiani</span><h2>Comprar na planta com quem conhece cada obra</h2>
+<section class="sec"><div class="w"><span class="eb">Por que a Lupiani</span><h2>Comprar com quem conhece cada imóvel</h2>
  <div class="why"><div><b>Tabelas atualizadas</b><p>Valores e unidades direto das incorporadoras parceiras, sem achismo.</p></div>
  <div><b>Visitas guiadas</b><p>Decorados e obras visitados com quem conhece cada detalhe do projeto.</p></div>
  <div><b>Fluxo explicado</b><p>Ato, mensais, intermediárias, INCC e financiamento: você entende tudo antes de assinar.</p></div>
@@ -267,7 +379,7 @@ dl{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;margin:0}dt{color:va
 <section class="sec" id="contato"><div class="w"><div class="ctt">
  <div><span class="eb">Atendimento</span><h2 style="font-size:clamp(1.6rem,4vw,2.2rem);margin:8px 0 10px">Conte o que você procura</h2>
   <p class="sub">Com essas respostas a gente já te chama com as opções certas, sem perder tempo com o que não faz sentido.</p>
-  <div class="cons"><div class="av">L</div><div><b>Lupiani Imóveis Lançamentos</b><small>Fábio Lupiani · CRECI-SP 232678-F</small><small>Barueri e Alphaville · WhatsApp (11) 94017-2182</small></div></div></div>
+  <div class="cons"><div class="av">L</div><div><b>Lupiani Imóveis</b><small>Fábio Lupiani · CRECI-SP 232678-F</small><small>Barueri e Alphaville · WhatsApp (11) 94017-2182</small></div></div></div>
  <form id="tri">
   <label>Seu nome<input name="n" required autocomplete="name"></label>
   <label>Objetivo<div class="seg" data-g="obj"><button type="button" class="ch">Morar</button><button type="button" class="ch">Investir</button><button type="button" class="ch">Os dois</button></div></label>
@@ -281,8 +393,8 @@ dl{display:grid;grid-template-columns:auto 1fr;gap:8px 14px;margin:0}dt{color:va
 </div></div></section>
 
 <footer><div class="w">
- <div class="logo"><b>LUPIANI</b><small>IMÓVEIS · LANÇAMENTOS</small></div>
- <p>Lupiani Imóveis Lançamentos · Fábio Lupiani · CRECI-SP 232678-F · Barueri e Alphaville · WhatsApp (11) 94017-2182</p>
+ <div class="logo"><svg class="lgi" viewBox="0 0 128 120" aria-hidden="true"><defs><linearGradient id="lgg2" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8f6b26"/><stop offset=".22" stop-color="#e8cc83"/><stop offset=".45" stop-color="#b38a3c"/><stop offset=".62" stop-color="#f2dc9a"/><stop offset=".82" stop-color="#c39a4a"/><stop offset="1" stop-color="#8a6624"/></linearGradient></defs><g fill="url(#lgg2)"><path d="M0 120V74.6L23.6 52.2V120z"/><path d="M29 120V25.1L60.7 0V120z"/><path d="M67.3 120V0L99 25.1V120z"/><path d="M104.4 120V52.2L128 74.6V120z"/></g></svg><span class="lgt"><b>LUPIANI</b><small>IMÓVEIS</small></span></div>
+ <p>Lupiani Imóveis · Fábio Lupiani · CRECI-SP 232678-F · Barueri e Alphaville · WhatsApp (11) 94017-2182</p>
  <p>Imagens meramente ilustrativas, fornecidas pelas incorporadoras. Valores "a partir de" são de referência, sujeitos a alteração e à disponibilidade de unidades. Confirme as condições vigentes antes de decidir.</p>
 </div></footer>
 
@@ -350,30 +462,98 @@ const m2=e=>e.m2[0].toLocaleString('pt-BR')+(e.m2[1]!==e.m2[0]?' a '+e.m2[1].toL
 const store={get(k){try{return JSON.parse(localStorage.getItem(k))}catch(_){return null}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(_){}}};
 let lead=store.get('lup_lead');
 
-$('#topwa').href=wa('Olá! Vim pelo site da Lupiani Imóveis e quero conhecer os lançamentos.');$('#topwa').innerHTML=WA+' Falar com o corretor';
+$('#topwa').href=wa('Olá! Vim pelo site da Lupiani Imóveis e quero conhecer os imóveis.');$('#topwa').innerHTML=WA+' Falar com o corretor';
 $('#herobg').style.backgroundImage=`url(${IM[D.find(e=>e.id==='royal').fotos[0]]})`;
 const minP=Math.min(...D.filter(e=>e.preco).map(e=>e.preco));
-$('#stats').innerHTML=[[D.length,'empreendimentos selecionados'],[K(minP),'imóveis a partir de'],[new Set(D.map(e=>inc(e).split(' · ')[0])).size,'incorporadoras parceiras'],['2','regiões: Barueri e Alphaville']].map(s=>`<div><b>${s[0]}</b><span>${s[1]}</span></div>`).join('');
+$('#stats').innerHTML=[[D.length,'imóveis selecionados'],['a partir de',K(minP)],[new Set(D.map(e=>inc(e).split(' · ')[0])).size,'incorporadoras parceiras']].map(s=>s[0]==='a partir de'?`<span>a partir de <b>${s[1]}</b></span>`:`<span><b>${s[0]}</b>${s[1]}</span>`).join('');
 
 /* ---------- filtros ---------- */
+D.forEach((e,i)=>e.cod='LUP-'+String(i+1).padStart(3,'0'));
+const HEART='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-7.5-4.6-9.6-9.2C.9 8.4 3 4.5 6.7 4.5c2.2 0 3.6 1.2 4.3 2.4.7-1.2 2.1-2.4 4.3-2.4 3.7 0 5.8 3.9 4.3 7.3C19.5 16.4 12 21 12 21z"/></svg>';
+const norm=t=>String(t).normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase().replace(/[-–·,]/g,' ').replace(/\s+/g,' ').trim();
+const yr=e=>{const m=(ent(e).match(/20\d\d/g)||[]).map(Number);return m.length?Math.max(...m):null};
+D.forEach(e=>e.cond=/pronto/i.test(e.status)?'pronto':'planta');
+let COND='';
 const F={regiao:new Set,tipo:new Set,dorm:new Set,status:new Set};
 const OPT={regiao:['Barueri','Alphaville'],tipo:[...new Set(D.map(e=>e.tipo))],dorm:['1','2','3','4+'],status:[...new Set(D.map(e=>e.status))]};
-$$('.frow[data-f]').forEach(r=>{const k=r.dataset.f;r.insertAdjacentHTML('beforeend',OPT[k].map(o=>`<button class="ch" data-v="${o}">${o}</button>`).join(''));
- r.addEventListener('click',ev=>{const b=ev.target.closest('.ch');if(!b)return;const v=b.dataset.v;F[k].has(v)?F[k].delete(v):F[k].add(v);b.classList.toggle('on');render()})});
+const NOMES={dorm:{'1':'1 dorm','2':'2 dorms','3':'3 dorms','4+':'4+ dorms'}};
+let COL=null,onlyFav=false;
+const FAV=new Set(store.get('lup_fav')||[]);
+const COLS=[
+ {id:'trem',t:'Perto do trem',s:'A pé da estação Antônio João',img:'royal/D1_fachada_noturna',f:e=>/esta[cç][aã]o|trem|cptm/i.test(e.local+' '+e.pitch)},
+ {id:'ate500',t:'Até R$ 500 mil',s:'Para dar o primeiro passo',img:'hub/fachada',f:e=>e.preco&&e.preco<=5e5},
+ {id:'invest',t:'Compactos para investir',s:'Studios e plantas até 45 m²',img:'duo/D3_infinity_pool',f:e=>e.tipo==='Studios'||e.m2[0]<=45},
+ {id:'familia',t:'Para a família',s:'3 dormitórios ou mais',img:'joy/D3_piscina',f:e=>e.dorms.length&&e.dorms.at(-1)>=3},
+ {id:'alpha',t:'Alphaville',s:'Endereço mais desejado da região',img:'nid/D3_piscina_resort',f:e=>e.regiao==='Alphaville'},
+ {id:'pre',t:'Pré-lançamentos',s:'Escolha primeiro as melhores unidades',img:'dom/D0_fachada',f:e=>e.status==='Pré-lançamento'},
+ {id:'resort',t:'Lazer de resort',s:'Clube completo dentro de casa',img:'royal/D5_spa',f:e=>e.lazer.length>=12},
+ {id:'lotes',t:'Lotes em condomínio',s:'Construa a casa do seu jeito',img:'artesano/D0_vista_aerea',f:e=>e.tipo==='Lotes'}];
+$('#cols').innerHTML=COLS.map(c=>{const n=D.filter(c.f).length;return n?`<button class="col" data-col="${c.id}"><img src="${IM[c.img]}" alt="" loading="lazy"><em>${n} ${n===1?'imóvel':'imóveis'}</em><span class="ci"><b>${esc(c.t)}</b><small>${esc(c.s)}</small></span></button>`:''}).join('');
+const incs=[...new Set(D.flatMap(e=>inc(e).split(' · ')).filter(Boolean))].sort((x,y)=>x.localeCompare(y,'pt-BR'));
+$('#finc').insertAdjacentHTML('beforeend',incs.map(i=>`<option>${esc(i)}</option>`).join(''));
+$$('.frow[data-f]').forEach(r=>{const k=r.dataset.f;r.insertAdjacentHTML('beforeend',OPT[k].map(o=>`<button class="ch" data-v="${o}">${(NOMES[k]||{})[o]||o}</button>`).join(''));
+ r.addEventListener('click',ev=>{const b=ev.target.closest('.ch');if(!b)return;const v=b.dataset.v;F[k].has(v)?F[k].delete(v):F[k].add(v);render()})});
 const hasD=(e,d)=>!e.dorms.length||(d==='4+'?e.dorms.at(-1)>=4:e.dorms.includes(+d));
-function filtra(){const q=$('#q').value.trim().toLowerCase(),pm=+$('#pmax').value||0;
- return D.filter(e=>(!q||[e.nome,e.local,e.cidade,inc(e),e.tipo].join(' ').toLowerCase().includes(q))
+const val=id=>+$(id).value||0;
+function filtra(){const q=norm($('#q').value),pmin=val('#pmin'),pmax=val('#pmax'),am=val('#amin'),ye=val('#fent'),ic=$('#finc').value,col=COL&&COLS.find(c=>c.id===COL);
+ let r=D.filter(e=>(!q||norm([e.nome,e.local,e.cidade,inc(e),e.tipo,e.status,e.cod,e.cod.replace('-',''),e.cod.slice(4)].join(' ')).includes(q))
  &&(!F.regiao.size||F.regiao.has(e.regiao))&&(!F.tipo.size||F.tipo.has(e.tipo))&&(!F.status.size||F.status.has(e.status))
- &&(!F.dorm.size||[...F.dorm].some(d=>hasD(e,d)))&&(!pm||(e.preco&&e.preco<=pm)))}
+ &&(!F.dorm.size||[...F.dorm].some(d=>hasD(e,d)))
+ &&(!pmin||(e.preco&&e.preco>=pmin))&&(!pmax||(e.preco&&e.preco<=pmax))
+ &&(!am||e.m2[1]>=am)&&(!ye||(yr(e)&&yr(e)<=ye))&&(!ic||inc(e).includes(ic))
+ &&(!col||col.f(e))&&(!onlyFav||FAV.has(e.id))&&(!COND||e.cond===COND));
+ const o=$('#ord').value,P=e=>e.preco||Infinity;
+ if(o==='pa')r.sort((x,y)=>P(x)-P(y));else if(o==='pd')r.sort((x,y)=>(y.preco||0)-(x.preco||0));else if(o==='m2')r.sort((x,y)=>y.m2[1]-x.m2[1]);else if(o==='ent')r.sort((x,y)=>(yr(x)||9999)-(yr(y)||9999));
+ return r}
 const sel=new Set;
-function card(e){return `<article class="card"><div class="ph" data-open="${e.id}"><img src="${IM[e.fotos[0]]}" alt="${esc(e.nome)}" loading="lazy"><span class="tag ${e.status==='Pré-lançamento'?'pre':''}">${esc(e.status)}</span><button class="shr" data-share="${e.id}" aria-label="Mandar pra alguém">↗</button></div>
- <div class="cb"><span class="loc">${esc(e.tipo)} · ${esc(e.cidade)}</span><h3>${esc(e.nome)}</h3><span class="pr">${preco(e)}</span>
- <div class="pills"><span class="pill">${m2(e)}</span><span class="pill">${dl(e)}</span><span class="pill">Entrega: ${esc(ent(e))}</span></div>
+function card(e){const ft=e.fotos.slice(0,5);
+ return `<article class="card"><div class="ph"><div class="slides" data-open="${e.id}">${ft.map((k,i)=>`<img src="${IM[k]}" alt="${esc(e.nome)} foto ${i+1}" ${i?'loading="lazy"':''}>`).join('')}</div>
+ <div class="tags"><span class="tag ${e.status==='Pré-lançamento'?'pre':''}">${esc(e.status)}</span><span class="tag cod">${e.cod}</span></div>
+ <div class="acts"><button class="shr ic fav ${FAV.has(e.id)?'on':''}" data-fav="${e.id}" aria-label="Favoritar" aria-pressed="${FAV.has(e.id)}">${HEART}</button><button class="shr" data-share="${e.id}" aria-label="Mandar pra alguém">↗</button></div>
+ ${ft.length>1?`<button class="sa p" data-sl="-1" aria-label="Foto anterior">‹</button><button class="sa n" data-sl="1" aria-label="Próxima foto">›</button>`:''}
+ <div class="pov"><span><small>${e.preco?'A partir de':'Valores'}</small><b>${e.preco?K(e.preco):'Sob consulta'}</b></span>${ft.length>1?`<span class="sdots">${ft.map((_,i)=>`<i class="${i?'':'on'}"></i>`).join('')}</span>`:''}</div></div>
+ <div class="cb"><span class="loc">${esc(e.tipo)} · ${esc(e.cidade)}</span><h3>${esc(e.nome)}</h3>
+ <div class="pills"><span class="pill">📐 ${m2(e)}</span><span class="pill">🛏 ${dl(e)}</span><span class="pill">🔑 ${esc(ent(e))}</span></div>
  <div class="cf"><button class="btn n" data-open="${e.id}">Ver detalhes</button><label class="cmpk"><input type="checkbox" data-cmp="${e.id}" ${sel.has(e.id)?'checked':''}>Comparar</label></div></div></article>`}
+function ativos(){const a=[],sel2=(id,t)=>{const el=$(id);if(el.value)a.push([t(el.options[el.selectedIndex].text),()=>{el.value=''}])};
+ if(COND)a.push([COND==='pronto'?'Prontos':'Na planta',()=>{COND=''}]);
+ if(COL)a.push(['Coleção: '+COLS.find(c=>c.id===COL).t,()=>{COL=null}]);
+ if($('#q').value.trim())a.push(['Busca: '+$('#q').value.trim(),()=>{$('#q').value='';$('#hq').value=''}]);
+ for(const k in F)F[k].forEach(v=>a.push([(NOMES[k]||{})[v]||v,()=>F[k].delete(v)]));
+ sel2('#pmin',t=>t);sel2('#pmax',t=>t);sel2('#amin',t=>t);sel2('#fent',t=>'Entrega '+t.toLowerCase());sel2('#finc',t=>t);
+ if(onlyFav)a.push(['Só favoritos',()=>{onlyFav=false}]);return a}
+let ACT=[];
 function render(){const r=filtra();$('#nres').textContent=r.length+(r.length===1?' imóvel encontrado':' imóveis encontrados');
- $('#grid').innerHTML=r.length?r.map(card).join(''):`<div class="empty">Nenhum imóvel com esses filtros. <button class="btn l" onclick="clr()">Limpar filtros</button> ou <button class="btn n" data-chat>fale com o Lupi</button></div>`}
-function clr(){Object.values(F).forEach(s=>s.clear());$$('.frow .ch').forEach(b=>b.classList.remove('on'));$('#q').value='';$('#pmax').value='';render()}
-$('#q').oninput=render;$('#pmax').onchange=render;$('#clr').onclick=clr;render();
+ $$('.frow[data-f]').forEach(row=>row.querySelectorAll('.ch').forEach(b=>b.classList.toggle('on',F[row.dataset.f].has(b.dataset.v))));
+ ACT=ativos();$('#act').innerHTML=ACT.map((x,i)=>`<button data-act="${i}">${esc(x[0])}</button>`).join('');
+ const nadv=Object.values(F).reduce((n,s)=>n+s.size,0)+['#pmin','#pmax','#amin','#fent','#finc'].filter(id=>$(id).value).length;$('#mfn').textContent=nadv||'';
+ $('#fonly').classList.toggle('on',onlyFav);$$('.htabs button').forEach(b=>b.classList.toggle('on',b.dataset.cond===COND));$$('#fcond .ch').forEach(b=>b.classList.toggle('on',b.dataset.cond===COND));
+ $('#grid').innerHTML=r.length?r.map(card).join(''):`<div class="empty">${COND==='pronto'&&!D.some(e=>e.cond==='pronto')?'Os imóveis prontos estão chegando ao site. Temos opções prontas para morar na nossa carteira: fale com a gente que mandamos as que combinam com você.':onlyFav&&!FAV.size?'Você ainda não favoritou nenhum imóvel. Toque no ♥ das fotos para guardar os que gostou.':'Nenhum imóvel com esses filtros.'} <button class="btn l" onclick="clr()">Limpar filtros</button> ou <button class="btn n" data-chat>fale com o Lupi</button></div>`}
+function clr(){Object.values(F).forEach(s=>s.clear());['#q','#hq','#hreg','#htipo','#hval','#pmin','#pmax','#amin','#fent','#finc','#ord'].forEach(id=>$(id).value='');COL=null;onlyFav=false;COND='';render()}
+function irLista(){$('#imoveis').scrollIntoView({behavior:'smooth'})}
+function abreAdv(v){$('#adv').hidden=!v;$('#mf').setAttribute('aria-expanded',v)}
+$('#q').oninput=()=>{$('#hq').value=$('#q').value;render()};['#pmin','#pmax','#amin','#fent','#finc','#ord'].forEach(id=>$(id).onchange=render);$('#clr').onclick=clr;
+$('#mf').onclick=()=>abreAdv($('#adv').hidden);
+$('#act').onclick=ev=>{const b=ev.target.closest('[data-act]');if(!b)return;ACT[+b.dataset.act][1]();render()};
+$('#fonly').onclick=()=>{onlyFav=!onlyFav;render()};
+$('#htipo').innerHTML='<option value="">Tipo</option>'+OPT.tipo.map(t=>`<option>${t}</option>`).join('');
+$('#hs').onsubmit=ev=>{ev.preventDefault();$('#q').value=$('#hq').value;if($('#hreg').value){F.regiao.clear();F.regiao.add($('#hreg').value)}if($('#htipo').value){F.tipo.clear();F.tipo.add($('#htipo').value)}if($('#hval').value)$('#pmax').value=$('#hval').value;render();irLista()};
+$$('.htabs button').forEach(b=>b.onclick=()=>{COND=b.dataset.cond;render()});
+$$('#fcond .ch').forEach(b=>b.onclick=()=>{COND=COND===b.dataset.cond?'':b.dataset.cond;render()});
+$$('.hquick [data-q]').forEach(b=>b.onclick=()=>{const [k,v]=b.dataset.q.split(':');
+ if(k==='mais'){abreAdv(true)}else if(k==='pmax'){$('#pmax').value=v}else{F[k].add(v)}render();irLista()});
+$('#cols').onclick=ev=>{const b=ev.target.closest('[data-col]');if(!b)return;COL=b.dataset.col;render();irLista()};
+function upFav(){$('#favn').textContent=FAV.size;$('#favh').classList.toggle('has',FAV.size>0)}
+function togFav(id){FAV.has(id)?FAV.delete(id):FAV.add(id);store.set('lup_fav',[...FAV]);upFav();
+ $$(`[data-fav="${id}"]`).forEach(b=>{b.classList.toggle('on',FAV.has(id));b.setAttribute('aria-pressed',FAV.has(id))});if(onlyFav)render()}
+$('#favh').onclick=()=>{onlyFav=true;render();irLista()};
+document.addEventListener('scroll',ev=>{const g=ev.target;if(!g.classList||!g.classList.contains('slides'))return;const i=Math.round(g.scrollLeft/g.clientWidth);
+ g.parentNode.querySelectorAll('.sdots i').forEach((d,j)=>d.classList.toggle('on',j===i))},true);
+let VIS=(store.get('lup_vis')||[]).filter(id=>D.some(e=>e.id===id));
+function upVis(){const v=VIS.map(id=>D.find(e=>e.id===id));$('#vis').hidden=!v.length;
+ $('#vrow').innerHTML=v.map(e=>`<div class="mini" data-open="${e.id}"><img src="${IM[e.fotos[0]]}" alt=""><div><b>${esc(e.nome)}</b><span>${e.cod} · ${esc(e.cidade)}</span><br><span style="color:var(--navy);font-weight:700">${preco(e)}</span></div></div>`).join('')}
+function marcaVis(id){VIS=[id,...VIS.filter(x=>x!==id)].slice(0,6);store.set('lup_vis',VIS);upVis()}
+upFav();upVis();render();
 
 /* ---------- comparar ---------- */
 function upBar(){$('#cbn').textContent=sel.size+(sel.size===1?' selecionado':' selecionados')+(sel.size<2?' · escolha mais 1':'');$('#cbar').classList.toggle('on',sel.size>0);$('#cbgo').disabled=sel.size<2;$('#cbgo').style.opacity=sel.size<2?.5:1;document.body.classList.toggle('cmp',sel.size>0)}
@@ -394,25 +574,29 @@ function lockBox(e){return lead?`<div class="lock"><h3>Tabela completa e book</h
  :`<form class="lock" onsubmit="libera(event,'${e.id}')"><h3>🔒 Tabela completa e book</h3><p>Todas as unidades disponíveis, valores por andar e o book oficial do ${esc(e.nome)}. Libere com seu nome e WhatsApp.</p>
  <input name="n" placeholder="Nome completo" required autocomplete="name"><input name="w" placeholder="WhatsApp com DDD" inputmode="tel" required pattern="[0-9()\\s+-]{10,}"><button class="btn g full">Liberar pelo WhatsApp</button><p style="font-size:.78rem">Seus dados ficam só com a Lupiani e são usados apenas para o seu atendimento.</p></form>`}
 function libera(ev,id){ev.preventDefault();const f=ev.target;lead={n:f.n.value.trim(),w:f.w.value.trim()};store.set('lup_lead',lead);pedir(id);abreDet(id)}
-function pedir(id){const e=D.find(x=>x.id===id);go(`Olá! Sou ${lead?lead.n:''}${lead?' ('+lead.w+')':''}. Vi o ${e.nome} no site da Lupiani e quero receber a tabela completa e o book.`)}
+function pedir(id){const e=D.find(x=>x.id===id);go(`Olá! Sou ${lead?lead.n:''}${lead?' ('+lead.w+')':''}. Vi o ${e.nome} (${e.cod}) no site da Lupiani e quero receber a tabela completa e o book.`)}
 function abreDet(id){const e=D.find(x=>x.id===id);if(!e)return;const ft=e.fotos;
  $('#det').innerHTML=`<button class="x" data-close>×</button><div class="galw"><div class="gal" id="gal">${ft.map((k,i)=>`<img src="${IM[k]}" alt="${esc(e.nome)} foto ${i+1}">`).join('')}</div><button class="gb p" onclick="gm(-1)">‹</button><button class="gb n" onclick="gm(1)">›</button><span class="gn" id="gn">1 / ${ft.length}</span></div>
  <div class="dt"><div style="display:grid;gap:16px">
-  <div class="bx"><span class="eb">${esc(e.tipo)} · ${esc(e.cidade)} · ${esc(e.status)}</span><h2 style="font-size:2rem;margin:6px 0">${esc(e.nome)}</h2><p style="color:var(--muted)">📍 ${esc(e.local)}</p><p class="pr" style="font-size:1.5rem;margin-top:10px">${preco(e)}</p><p style="margin-top:12px">${esc(e.pitch)}</p></div>
+  <div class="bx"><span class="eb">${e.cod} · ${esc(e.tipo)} · ${esc(e.cidade)} · ${esc(e.status)}</span><h2 style="font-size:2rem;margin:6px 0">${esc(e.nome)}</h2><p style="color:var(--muted)">📍 ${esc(e.local)}</p><p class="pr" style="font-size:1.5rem;margin-top:10px">${preco(e)}</p><p style="margin-top:12px">${esc(e.pitch)}</p></div>
   <div class="bx"><h3>${e.tipo==='Lotes'?'Lotes':'Plantas e tipologias'}</h3>${e.tipos.map(t=>`<div class="tp"><b>${esc(t[0])}</b><span>${esc(t[1])}</span></div>`).join('')}${e.plantas.length?`<div class="pls" style="margin-top:12px">${e.plantas.map(k=>`<img src="${IM[k]}" alt="Planta">`).join('')}</div>`:''}</div>
   <div class="bx"><h3>Lazer e diferenciais</h3><ul class="lz">${e.lazer.map(l=>`<li>${esc(l)}</li>`).join('')}</ul></div>
   <div class="bx"><h3>Ficha técnica</h3><dl>${e.fatos.map(f=>`<dt>${esc(f[0])}</dt><dd>${esc(f[1])}</dd>`).join('')}</dl><a class="btn l full" style="margin-top:14px" target="_blank" rel="noopener" href="https://www.google.com/maps/search/${encodeURIComponent(e.maps)}">📍 Ver no mapa</a></div>
   ${e.aviso?`<p class="warn">${esc(e.aviso)}</p>`:''}
  </div><div class="side" style="display:grid;gap:12px">${lockBox(e)}
-  <a class="btn wa full" target="_blank" rel="noopener" href="${wa('Olá! Quero agendar uma visita ao '+e.nome+'.')}">${WA} Agendar visita</a>
+  <a class="btn wa full" target="_blank" rel="noopener" href="${wa('Olá! Quero agendar uma visita ao '+e.nome+' ('+e.cod+').')}">${WA} Agendar visita</a>
+  <button class="btn l full fav ${FAV.has(e.id)?'on':''}" data-fav="${e.id}" aria-pressed="${FAV.has(e.id)}" style="gap:8px"><span class="ic" style="display:inline-flex">${HEART}</span> Favoritar</button>
   <button class="btn l full" data-share="${e.id}">↗ Mandar pra alguém</button></div></div>`;
- abre('#ovd');$('#det').scrollTop=0;history.replaceState(null,'','#imovel/'+id);
+ abre('#ovd');$('#det').scrollTop=0;marcaVis(id);history.replaceState(null,'','#imovel/'+id);
  const g=$('#gal');g.onscroll=()=>{$('#gn').textContent=Math.round(g.scrollLeft/g.clientWidth)+1+' / '+ft.length}}
 function gm(d){const g=$('#gal');g.scrollBy({left:d*g.clientWidth,behavior:'smooth'})}
 function share(id){const e=D.find(x=>x.id===id);const url=location.href.split('#')[0]+'#imovel/'+id;const t=`Olha esse: ${e.nome} (${e.cidade}), ${preco(e).toLowerCase()}.`;
  if(navigator.share)navigator.share({title:e.nome,text:t,url}).catch(()=>{});else window.open('https://wa.me/?text='+encodeURIComponent(t+' '+url),'_blank','noopener')}
 
-document.addEventListener('click',ev=>{const o=ev.target.closest('[data-open]'),s=ev.target.closest('[data-share]'),c=ev.target.closest('[data-chat]');
+document.addEventListener('click',ev=>{const fv=ev.target.closest('[data-fav]'),sl=ev.target.closest('[data-sl]');
+ if(fv){ev.stopPropagation();togFav(fv.dataset.fav);return}
+ if(sl){const g=sl.parentNode.querySelector('.slides');g.scrollBy({left:+sl.dataset.sl*g.clientWidth,behavior:'smooth'});return}
+ const o=ev.target.closest('[data-open]'),s=ev.target.closest('[data-share]'),c=ev.target.closest('[data-chat]');
  if(s){ev.stopPropagation();share(s.dataset.share)}else if(o){fecha();abreDet(o.dataset.open)}else if(c){fecha();chat()}});
 
 /* ---------- simulador ---------- */
